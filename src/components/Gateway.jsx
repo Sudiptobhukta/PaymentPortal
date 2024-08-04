@@ -9,7 +9,8 @@ import {quantum} from 'ldrs';
 
 
 export default function Gateway() {
-
+  
+  var check = false;
   const [userData,setData] = useState(null);
   const navigate = useNavigate();
   quantum.register()
@@ -33,9 +34,15 @@ const fetchData = async() =>{
     const docsnap = await(getDoc(docRef));
     if (docsnap.exists()){
       setData(docsnap.data());
-      console.log(docsnap.data());
-      console.log(userData.FirstName);
+      // console.log(docsnap.data());
+      // console.log(userData.FirstName);
       
+    }else if(user){
+      setData(user)
+      check = true;
+      console.log(userData.displayName)
+      console.log(check)
+
     }else{
       console.log("user is not logged in");
     }
@@ -71,11 +78,11 @@ const fetchData = async() =>{
           damping: 5,
           stiffness: 100,
           restDelta: 0.001}}}
-      className="text-7xl mb-6 font-mono text-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-center mt-9 flex flex-wrap selection:bg-slate-600 selection:text-white"> Welcome&nbsp;<span className="font-bold"> {userData.FirstName}</span> </motion.div>
+      className="text-7xl mb-6 font-mono text-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-center mt-9 flex flex-wrap selection:bg-slate-600 selection:text-white"> Welcome&nbsp;<span className="font-bold">{ (userData.displayName) ? userData.displayName : userData.FirstName} </span> </motion.div>
       <motion.div 
        initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{
+      transition={{           
         duration: 1,
         ease: [0, 0.71, 0.2, 1.01],
         scale: {
