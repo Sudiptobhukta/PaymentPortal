@@ -113,7 +113,7 @@ function Hero() {
                       </motion.div>
                       <motion.span className="flex flex-auto justify-center text-sm mb-4 underline font-bold text-blue-500"
                       whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}
-                      ><button onClick={handleRegister}><a href="/register">New Register</a></button></motion.span>
+                      ><button onClick={handleRegister}>New Register</button></motion.span>
                       </div>
 
     </motion.div>
