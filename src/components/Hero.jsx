@@ -14,6 +14,10 @@ function Hero() {
     const navigate = useNavigate();
     const [mail,mailtxt] = useState();
     const [ pass,passtxt] = useState();
+    const handleRegister =()=>{
+      navigate('/register')
+    }
+
     const handleSubmit = async (e)=>{
       e.preventDefault();
       try {
@@ -109,7 +113,7 @@ function Hero() {
                       </motion.div>
                       <motion.span className="flex flex-auto justify-center text-sm mb-4 underline font-bold text-blue-500"
                       whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}
-                      ><a href="/register">New Register</a></motion.span>
+                      ><button onClick={handleRegister}><a href="/register">New Register</a></button></motion.span>
                       </div>
 
     </motion.div>
